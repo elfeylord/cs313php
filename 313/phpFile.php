@@ -26,7 +26,7 @@
 
 <html>
 	<head>
-		<title> HELLO! </title>
+		<title> Assignment 1 </title>
 		<?php include '../cssAndJava.php';?>
 		<script>
 		
