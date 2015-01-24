@@ -102,86 +102,90 @@
 <html>
 	<head>
 		<title>Results</title>
+		<?php include '../cssAndJava.php';?>
 	</head>
 	<body>
-		<h1> Results </h1>
-		
-		<h2> Who is the best character?</h2>
-		<table>
-			<tr>
-				<td>Luke</td>
-				<td><?php echo($data[0]);?></td>
-			</tr>
-			<tr>
-				<td>Leah</td>
-				<td><?php echo($data[1]);?></td>
-			</tr>
-			<tr>
-				<td>Han</td>
-				<td><?php echo($data[2]);?></td>
-			</tr>
-		</table>
-		<h2> What is the best light-saber color?</h2>
-		<table>
-			<tr>
-				<td>Blue</td>
-				<td><?php echo($data[3]);?></td>
-			</tr>
-			<tr>
-				<td>Green</td>
-				<td><?php echo($data[4]);?></td>
-			</tr>
-			<tr>
-				<td>Pink</td>
-				<td><?php echo($data[5]);?></td>
-			</tr>
-			<tr>
-				<td>Purple</td>
-				<td><?php echo($data[6]);?></td>
-			</tr>
-			<tr>
-				<td>Red</td>
-				<td><?php echo($data[7]);?></td>
-			</tr>
-		</table>
-		<h2> Which movie was the best?</h2>
-		<table>
-			<tr>
-				<td>Movie 1</td>
-				<td><?php echo($data[8]);?></td>
-			</tr>
-			<tr>
-				<td>Movie 2</td>
-				<td><?php echo($data[9]);?></td>
-			</tr>
-			<tr>
-				<td>Movie 3</td>
-				<td><?php echo($data[10]);?></td>
-			</tr>
-			<tr>
-				<td>Movie 4</td>
-				<td><?php echo($data[11]);?></td>
-			</tr>
-			<tr>
-				<td>Movie 5</td>
-				<td><?php echo($data[12]);?></td>
-			</tr>
-			<tr>
-				<td>Movie 6</td>
-				<td><?php echo($data[13]);?></td>
-			</tr>
-		</table>
-			<h2> What character should be removed?</h2>
-		<table>
-			<tr>
-				<td>Jar Jar</td>
-				<td><?php echo($data[14]);?></td>
-			</tr>
-			<tr>
-				<td>C3P0</td>
-				<td><?php echo($data[15]);?></td>
-			</tr>
-		</table>
+		<?php include '../links.php';?>
+		<div id = "wrapperSkinny">
+			<h1> Results </h1>
+			
+			<h2> Who is the best character?</h2>
+			<table>
+				<tr>
+					<td>Luke</td>
+					<td><?php echo($data[0]);?></td>
+				</tr>
+				<tr>
+					<td>Leah</td>
+					<td><?php echo($data[1]);?></td>
+				</tr>
+				<tr>
+					<td>Han</td>
+					<td><?php echo($data[2]);?></td>
+				</tr>
+			</table>
+			<h2> What is the best light-saber color?</h2>
+			<table>
+				<tr>
+					<td>Blue</td>
+					<td><?php echo($data[3]);?></td>
+				</tr>
+				<tr>
+					<td>Green</td>
+					<td><?php echo($data[4]);?></td>
+				</tr>
+				<tr>
+					<td>Pink</td>
+					<td><?php echo($data[5]);?></td>
+				</tr>
+				<tr>
+					<td>Purple</td>
+					<td><?php echo($data[6]);?></td>
+				</tr>
+				<tr>
+					<td>Red</td>
+					<td><?php echo($data[7]);?></td>
+				</tr>
+			</table>
+			<h2> Which movie was the best?</h2>
+			<table>
+				<tr>
+					<td>Movie 1</td>
+					<td><?php echo($data[8]);?></td>
+				</tr>
+				<tr>
+					<td>Movie 2</td>
+					<td><?php echo($data[9]);?></td>
+				</tr>
+				<tr>
+					<td>Movie 3</td>
+					<td><?php echo($data[10]);?></td>
+				</tr>
+				<tr>
+					<td>Movie 4</td>
+					<td><?php echo($data[11]);?></td>
+				</tr>
+				<tr>
+					<td>Movie 5</td>
+					<td><?php echo($data[12]);?></td>
+				</tr>
+				<tr>
+					<td>Movie 6</td>
+					<td><?php echo($data[13]);?></td>
+				</tr>
+			</table>
+				<h2> What character should be removed?</h2>
+			<table>
+				<tr>
+					<td>Jar Jar</td>
+					<td><?php echo($data[14]);?></td>
+				</tr>
+				<tr>
+					<td>C3P0</td>
+					<td><?php echo($data[15]);?></td>
+				</tr>
+			</table>
+		</div>
 	</body>
 
 </html>

@@ -27,13 +27,15 @@
 <html>
 	<head>
 		<title> HELLO! </title>
+		<?php include '../cssAndJava.php';?>
 		<script>
 		
 			
 		</script>
 	</head>
 	<body>
-		<div id = "wrapper">
+		<?php include '../links.php';?>
+		<div id = "wrapperSkinny" >
 			<h1>Star Wars!</h1>
 			<form action = "form.php" method = "POST">
 				Who is the best character? <br/>
@@ -49,20 +51,20 @@
 				<input type = "radio" name = "color" value = "red"/> Red <br/>
 				<br/>
 				Which movie was the best?<br/>
-				<input type = "radio" name = "movie" value = "1" checked = "checked"/> 1 <br/>
-				<input type = "radio" name = "movie" value = "2"/> 2 <br/>
-				<input type = "radio" name = "movie" value = "3"/> 3 <br/>
-				<input type = "radio" name = "movie" value = "4"/> 4 <br/>
-				<input type = "radio" name = "movie" value = "5"/> 5 <br/>
-				<input type = "radio" name = "movie" value = "6"/> 6 <br/>
+				<input type = "radio" name = "movie" value = "1" checked = "checked"/> Movie 1 <br/>
+				<input type = "radio" name = "movie" value = "2"/> Movie 2 <br/>
+				<input type = "radio" name = "movie" value = "3"/> Movie 3 <br/>
+				<input type = "radio" name = "movie" value = "4"/> Movie 4 <br/>
+				<input type = "radio" name = "movie" value = "5"/> Movie 5 <br/>
+				<input type = "radio" name = "movie" value = "6"/> Movie 6 <br/>
 				<br/>
 				What character should be removed?<br/>
 				<input type = "radio" name = "removed" value = "jarjar" checked = "checked"/> Jar Jar <br/>
 				<input type = "radio" name = "removed" value = "c3po"/> C3P0 <br/>
 				<input type = "submit" value = "submit"/>
-				
+				<input href = "form.php" type = "button" value = "Go to Results" onclick = "location.href='form.php'">
 			</form>
-			<input href = "form.php" type = "button" value = "Go to Results" onclick = "location.href='form.php'">
+			
 		</div>
 	</body>
 </html>
