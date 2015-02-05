@@ -16,6 +16,12 @@
 			   echo "Error!: " . $ex->getMessage();
 			   die(); 
 			}
+			foreach ($db->query("SELECT name, password, email FROM scriptures;") as $row)
+			{
+			   echo "<p>" . $row['password'] . " " . $row['name'] . ":" . $row['email'] . " ";
+			   echo "</p>";
+			   echo "<br />";
+			}
 		?>
 	</body>
 </html>
