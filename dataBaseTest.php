@@ -13,7 +13,7 @@ echo "host:$dbHost:$dbPort dbName:$dbName user:$dbUser password:$dbPassword<br /
 			{
 			   $user = "php";
 			   $password = "php-pass"; 
-			   $db = new PDO("mysql:host=localhost;dbname=fishing", $user, $password);
+			   $db = new PDO("mysql:host=$dbHost:$dbPort;dbname=fishing", $user, $password);
 			   //$db = new PDO("mysql:host=localhost;dbname=scripture", $user, $password);
 			}
 			catch (PDOException $ex) 
