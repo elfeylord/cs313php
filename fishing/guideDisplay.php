@@ -11,11 +11,13 @@
 		<div id = "wrapper">
 			
 			<?php
+			$dbHost = getenv('OPENSHIFT_MYSQL_DB_HOST');
+			$dbPort = getenv('OPENSHIFT_MYSQL_DB_PORT');
 			try
 			{
 			   $user = "php";
 			   $password = "php-pass"; 
-			   $db = new PDO("mysql:host=localhost;dbname=fishing", $user, $password);
+			   $db = new PDO("mysql:host=$dbHost:$dbPort;dbname=fishing", $user, $password);
 			}
 			catch (PDOException $ex) 
 			{
