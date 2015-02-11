@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang = "en">
+	<head>
+		<title>
+			Reese's Fish Hunt - Guide Others
+		</title>
+		<?php include 'links.php';?>
+	</head>
+	<body>
+		<?php include 'header.php';?>
+		<div id = "wrapper">
+			<h1>
+				Welcome!
+			</h1>
+		</div>
+	</body>
+</html>

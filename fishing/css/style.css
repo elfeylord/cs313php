@@ -1,0 +1,73 @@
+
+#wrapper
+{
+
+	padding:10px;
+	width: 90%;
+	margin: 0 auto;
+	background-color:lightgrey;
+}
+
+#navigation
+{
+
+	padding:10px;
+	width: 90%;
+	margin: 0 auto;
+	background-color:#0099FF;
+}
+
+#banner
+{
+	padding:10px;
+	width: 90%;
+	margin: 0 auto;
+	background-color:lightgrey;
+}
+#bannerimg
+{
+	width:100%;
+}
+
+
+img.left
+{
+	float: left;
+	
+
+}
+
+img.right
+{
+	float : right;
+	
+}
+
+table{
+	width:100%;
+	border: 2px solid black;
+}
+td,th
+{
+	border: 2px solid black;
+}
+th.links
+{
+	background-color:#0099FF;
+}
+th.links:hover
+{
+	background-color:#D6EBFF;
+}
+body
+{
+	background-color: #0099FF;
+	background-image: url("../images/background.jpg")
+}
+h1
+{
+	font-size:250%;
+	font-family:arial;
+	color:#0099FF;
+	text-align:center;
+}
