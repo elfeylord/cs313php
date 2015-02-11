@@ -12,18 +12,22 @@
 			<?php
 				$p = $_POST['password'];
 				$u = $_POST['username'];
+				$dbHost = getenv('OPENSHIFT_MYSQL_DB_HOST');
+				$dbPort = getenv('OPENSHIFT_MYSQL_DB_PORT');
+				$dbUser = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
+				$dbPassword = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
 				try
 				{
 				   $user = "php";
 				   $password = "php-pass"; 
-				   $db = new PDO("mysql:host=localhost;dbname=fishing", $user, $password);
+				   $db = new PDO("mysql:host=$dbHost:$dbPort;dbname=fishing", $dbUser, $dbPassword);
 				}
 				catch (PDOException $ex) 
 				{
 				   echo "Error!: " . $ex->getMessage();
 				   die(); 
 				}
-				$data = $db->query("SELECT guideid, information FROM guide where username LIKE '" . $u . "' AND password like '" . $p . "';");
+					$data = $db->query("SELECT guideid, information FROM guide where username LIKE '" . $u . "' AND password like '" . $p . "';");
 				$row = $data->fetch(PDO::FETCH_ASSOC);
 				if ($row['guideid'] === null)
 				{
