@@ -10,9 +10,9 @@
 		<?php include 'header.php';?>
 		<div id = "wrapper">
 			<h1>
-				Welcome guides!
+				Welcome guides! Log in please.
 			</h1>
-			<form action = "guideSignIn.php" method = "POST"> 
+			<form id = "oldForm" action = "guideSignIn.php" method = "POST"> 
 				<input type = "text" name = "username" /> - UserName
 				<br/>
 				<input type = "password" name = "password" /> - Password
@@ -20,7 +20,7 @@
 				<input type = "submit" value = "Enter"/>
 			</form>
 			<p>New Guide</p>
-			<form id = 'newForm' action = 'registerGuide.php' method = 'POST'>
+			<form id = "newForm" action = "registerGuide.php" method = "POST">
 				<input type = "text" name = 'username' /> - UserName
 				<br/>
 				<input type = "text" name = 'password'/> - Password
