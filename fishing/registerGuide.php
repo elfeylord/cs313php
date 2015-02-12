@@ -9,6 +9,7 @@
 	<body>
 		<?php include 'header.php';?>
 		<div id = "wrapper">
+			<p>GUIDES</p>
 			<?php
 				//Get the POST variables
 				$username = $_POST['username'];
