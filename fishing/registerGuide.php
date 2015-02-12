@@ -24,8 +24,8 @@
 				//open the DB
 				try
 				{
-				   $user = "php";
-				   $password = "php-pass"; 
+				   //$user = "php";
+				   //$password = "php-pass"; 
 				   $db = new PDO("mysql:host=$dbHost:$dbPort;dbname=fishing", $dbUser, $dbPassword);
 				}
 				catch (PDOException $ex) 
@@ -36,9 +36,9 @@
 				
 				$query = 'INSERT INTO guide(information, username, password) VALUES(:information, :username, :password)';
 				$statement = $db->prepare($query);
-				statement->bindParam(':information', $information);
-				statement->binfParam(':username', $username);
-				statement->bindParam(':password', $password);
+				$statement->bindParam(':information', $information);
+				$statement->binfParam(':username', $username);
+				$statement->bindParam(':password', $password);
 				$statement->execute();
 				echo("<h1>" . $username . "You have now registered </h1>");
 			?>
