@@ -26,25 +26,27 @@
 				echo("<p>all is well 3</p>");
 				try
 				{
-				   //$user = "php";
-				   //$password = "php-pass"; 
-				   $db = new PDO("mysql:host=$dbHost:$dbPort;dbname=fishing", $dbUser, $dbPassword);
+					//$user = "php";
+					//$password = "php-pass"; 
+					$db = new PDO("mysql:host=$dbHost:$dbPort;dbname=fishing", $dbUser, $dbPassword);
+					echo("<p>all is well 4</p>");
+					$query = 'INSERT INTO guide(information, username, password) VALUES(:information, :username, :password)';
+					echo("<p>all is well 4.2</p>");
+					$statement = $db->prepare($query);
+					$statement->bindParam(':information', $information);
+					$statement->binfParam(':username', $username);
+					$statement->bindParam(':password', $password);
+					$statement->execute();
+					echo("<p>all is well 5</p>");
+					echo("<h1>" . $username . "You have now registered </h1>");
+				
 				}
 				catch (PDOException $ex) 
 				{
 				   echo "Error!: " . $ex->getMessage();
 				   die(); 
 				}
-				echo("<p>all is well 4</p>");
-				$query = 'INSERT INTO guide(information, username, password) VALUES(:information, :username, :password)';
-				echo("<p>all is well 4.2</p>");
-				$statement = $db->prepare($query);
-				$statement->bindParam(':information', $information);
-				$statement->binfParam(':username', $username);
-				$statement->bindParam(':password', $password);
-				$statement->execute();
-				echo("<p>all is well 5</p>");
-				echo("<h1>" . $username . "You have now registered </h1>");
+				
 			?>
 		</div>
 	</body>
