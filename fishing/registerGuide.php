@@ -2,7 +2,7 @@
 <html lang = "en">
 	<head>
 		<title>
-			Reese's Fish Hunt - Guide Display
+			Reese's Fish Hunt - Guide Others Registration
 		</title>
 		<?php include 'links.php';?>
 	</head>
@@ -10,6 +10,11 @@
 		<?php include 'header.php';?>
 		<div id = "wrapper">
 			<?php
+				//Get the POST variables
+				$username = $_POST['username'];
+				$password = $_POST['password'];
+				$information = $_POST['information'];
+				
 				//Get the access variables
 				$dbHost = getenv('OPENSHIFT_MYSQL_DB_HOST');
 				$dbPort = getenv('OPENSHIFT_MYSQL_DB_PORT');
@@ -28,21 +33,13 @@
 				   die(); 
 				}
 				
-				echo ("<h1>");
-				echo ($_POST['guide']);
-				echo ("</h1>");
-				echo ("<h2> Guide information: </h2>");
-				echo ("<p>");
-				//Get the guide information
-				$data = $db->query("SELECT information, guideid FROM guide where username LIKE '" . $_POST['guide'] . "';");
-				$row = $data->fetch(PDO::FETCH_ASSOC);
-				echo ($row["information"] . "</p>");
-				echo ("<h2> Lakes: </h2>");
-				//display what lakes he guides on
-				foreach ( $db->query("select lake.name from lakeguide join lake on lakeguide.lakeID = lake.lakeID where lakeguide.guideid like '%" . $row["guideid"] . "%';") as $row2)
-				{
-					echo("<p>" . $row2['name'] . "</p>");
-				}
+				$query = 'INSERT INTO guide(information, username, password) VALUES(:information, :username, :password)';
+				$statement = $db->prepare($query);
+				statement->bindParam(':information', $information);
+				statement->binfParam(':username', $username);
+				statement->bindParam(':password', $password);
+				$statement->execute();
+				echo("<h1>" . $username . "You have now registered </h1>");
 			?>
 		</div>
 	</body>
