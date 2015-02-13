@@ -25,7 +25,7 @@
 				<br/>
 				<input type = "text" name = 'password'/> - Password
 				<br/>
-				<textarea form = 'newForm' name = 'information'> </textarea> - Information
+				<textarea form = 'newForm' name = 'information'></textarea> - Information
 				<br />
 				<input type = "submit" value = "Enter"/>
 			</form>
