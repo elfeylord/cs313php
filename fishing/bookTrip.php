@@ -24,10 +24,10 @@
 			<br/>
 			NewUser
 			<br/>
-			<form action = "" method = "POST"> 
+			<form action = "registerUser.php" method = "POST"> 
 				<input type = "text" name = "name" /> - Name
 				<br/>
-				<input type = "text" name = "username" /> - Email
+				<input type = "text" name = "email" /> - Email
 				<br/>
 				<input type = "password" name = "password" /> - Password
 				<br/>

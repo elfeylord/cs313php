@@ -30,33 +30,7 @@
 				
 				//$fisherid = $row["fisherid"];
 				echo("<h1> welcome! </h1>");
-				echo("<p>Select the month you desire to fish on:</p>");
-				echo("<select type = 'list' id = 'month' name = 'month' form = 'lookup'>
-							<option value = '01' selected = 'selected'/> Jan
-							<option value = '02'/> Feb
-							<option value = '03'/> March
-							<option value = '04'/> April
-							<option value = '05'/> May
-							<option value = '06'/> June
-							<option value = '07'/> July
-							<option value = '08'/> Aug
-							<option value = '09'/> Sept
-							<option value = '10'/> Oct
-							<option value = '11'/> Nov
-							<option value = '12'/> Dec
-						</select>
-						<select type = 'list' name = 'year' id = 'year' form = 'lookup'>
-							<option value = '" . (intval(date("Y"))) . "'selected = 'selected'/>" . (intval(date("Y"))) .
-							"<option value = '" . (intval(date("Y")) + 1) . "' />" . (intval(date("Y")) + 1) .
-							"<option value = '" . (intval(date("Y")) + 2) . "'/>" . (intval(date("Y")) + 2) .
-							"<option value = '" . (intval(date("Y")) + 3) . "'/>" . (intval(date("Y")) + 3) .
-							"<option value = '" . (intval(date("Y")) + 4) . "'/>" . (intval(date("Y")) + 4) .
-							"<option value = '" . (intval(date("Y")) + 5) . "'/>" . (intval(date("Y")) + 5) .
-						"</select>
-					<form id = 'lookup' action = 'bookTripLookUp.php' method = 'POST'>
-						<input type = 'submit' value = 'Enter'/>
-						
-					</form>");					
+				require('tripList.php');					
 					
 					$data = $db->query("select * from trip where date_format(date, '%Y-%m-%d') between '" . 
 										$year . "-" . $month . "-01' AND '" . $year . "-" . $month . "-31';");
@@ -68,7 +42,7 @@
 					else
 					{
 						echo ("Select a trip<br/>");
-						echo ("<form id = 'trips'>");
+						echo ("<form id = 'trips' action = 'addBookedTrip.php' method = 'POST'>");
 						
 						foreach ($data = $db->query("select * from trip where date_format(date, '%Y-%m-%d') between '" . 
 											$year . "-" . $month . "-01' AND '" . $year . "-" . $month . "-31';") as $row)
@@ -77,7 +51,8 @@
 							{
 								$data2 = $db->query("select username from guide where guideid like '%" . $row["guideID"] . "%';");
 								$row2 = $data2->fetch(PDO::FETCH_ASSOC);
-								echo ("<input type = 'checkbox' name = 'trip'/ form = 'trips'>" . $row["date"] . " by " . $row2["username"] . "<br/>");	
+								$tripid = $row['tripID'];
+								echo ("<input type = 'radio' name = 'trip' form = 'trips' value = $tripid>" . $row["date"] . " by " . $row2["username"] . "<br/>");	
 							}
 							else
 							{

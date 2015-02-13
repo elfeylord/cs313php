@@ -12,7 +12,7 @@
 			<?php
 				$p = $_POST['password'];
 				$u = $_POST['username'];
-				echo "Password: $p, and Username: $u";
+				
 				require('dbSetup.php');
 				
 				try
@@ -29,7 +29,7 @@
 				$statement = $db->prepare($query);
 				$statement->execute();
 				$row = $statement->fetch(PDO::FETCH_ASSOC);
-				echo "guideInfo:" . $row['information'];
+			
 				if ($row['guideid'] === null)
 				{
 					echo("<p>Invalid UserName or Password!</p>");
@@ -132,15 +132,15 @@
 					<br/>
 					<br/>
 					Add Lake:
-					<form action = ''>");
-						foreach ( $db->query('select name from lake;') as $row)
+					<form action = 'addLake.php' method = 'POST'>");
+						foreach ( $db->query('select name, lakeid from lake;') as $row)
 						{
 							echo("
-								<input type = 'radio' name = 'lake' value = '" . $row["name"] . "'/>"
+								<input type = 'radio' name = 'lake' value = '" . $row["lakeid"] . "'/>"
 								. $row["name"] .
 								"<br/>");
 						}
-					echo ("<input type = 'button' value = 'Enter'/>
+					echo ("<input type = 'submit' value = 'Enter'/>
 					</form>");
 					
 					echo ("
