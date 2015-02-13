@@ -9,36 +9,46 @@
 	<body>
 		<?php include 'header.php';?>
 		<div id = "wrapper">
-			<p>GUIDES</p>
 			<?php
 				//Get the POST variables
-				echo("<p>all is well 1</p>");
 				$username = $_POST['username'];
 				$password = $_POST['password'];
 				$information = $_POST['information'];
-				echo("<p>all is well 2</p>");
-				//Get the access variables
-				$dbHost = getenv('OPENSHIFT_MYSQL_DB_HOST');
-				$dbPort = getenv('OPENSHIFT_MYSQL_DB_PORT');
-				$dbUser = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
-				$dbPassword = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
+				
+				//Get the access variables	
+				require('dbSetup.php');
+				
 				//open the DB
-				echo("<p>all is well 3</p>");
 				try
 				{
-					//$user = "php";
-					//$password = "php-pass"; 
-					$db = new PDO("mysql:host=$dbHost:$dbPort;dbname=fishing", $dbUser, $dbPassword);
-					echo("<p>all is well 4</p>");
-					$query = 'INSERT INTO guide(information, username, password) VALUES(:information, :username, :password)';
-					echo("<p>all is well 4.2</p>");
-					$statement = $db->prepare($query);
-					$statement->bindParam(':information', $information);
-					$statement->binfParam(':username', $username);
-					$statement->bindParam(':password', $password);
-					$statement->execute();
-					echo("<p>all is well 5</p>");
-					echo("<h1>" . $username . "You have now registered </h1>");
+					
+					if( $username == "" || $password == ""|| $information == "")
+					{
+						echo("<h1> Error, you must fill in all of the fields.</h1>");
+					}
+					else
+					{
+						$db = new PDO("mysql:host=$dbHost:$dbPort;dbname=fishing", $dbUser, $dbPassword);
+						$query = "SELECT guideid FROM guide WHERE username LIKE '$username';";
+						$statement = $db->prepare($query);
+						$statement->execute();
+						$row = $statement->fetch(PDO::FETCH_ASSOC);
+						
+						if($row['guideid'] === null)
+						{
+							$query = 'INSERT INTO guide(information, username, password) VALUES(:information, :username, :password)';
+							$statement = $db->prepare($query);
+							$statement->bindParam(':information', $information);
+							$statement->bindParam(':username', $username);
+							$statement->bindParam(':password', $password);
+							$statement->execute();
+							echo("<h1>" . $username . ", you have now registered </h1>");
+						}
+						else
+						{
+							echo "$username is already a guide";
+						}
+					}
 				
 				}
 				catch (PDOException $ex) 

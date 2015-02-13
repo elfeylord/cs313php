@@ -14,10 +14,8 @@
 			</h1>
 			<?php
 			//Get the variables
-			$dbHost = getenv('OPENSHIFT_MYSQL_DB_HOST');
-			$dbPort = getenv('OPENSHIFT_MYSQL_DB_PORT');
-			$dbUser = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
-			$dbPassword = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
+			require('dbSetup.php');
+			//echo "host:$dbHost:$dbPort dbName:$dbName user:$dbUser password:$dbPassword<br >\n";
 			//check if it is good to access the DB
 			try
 			{
