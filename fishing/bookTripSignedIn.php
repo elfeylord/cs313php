@@ -23,9 +23,11 @@
 				   echo "Error!: " . $ex->getMessage();
 				   die(); 
 				}
+				
 				$query = "SELECT fisherid FROM fisher where email LIKE '" . $e . "' AND password like '" . $p . "';";
 				$statement = $db->prepare($query);
 				$statement->execute();
+				
 				$row = $statement->fetch(PDO::FETCH_ASSOC);
 				if ($row['fisherid'] === null)
 				{

@@ -52,7 +52,7 @@
 								$data2 = $db->query("select username from guide where guideid like '%" . $row["guideID"] . "%';");
 								$row2 = $data2->fetch(PDO::FETCH_ASSOC);
 								$tripid = $row['tripID'];
-								echo ("<input type = 'radio' name = 'trip' form = 'trips' value = $tripid>" . $row["date"] . " by " . $row2["username"] . "<br/>");	
+								echo ("<input type = 'radio' name = 'trip' form = 'trips' value = '$tripid'/>" . $row["date"] . " by " . $row2["username"] . "<br/>");	
 							}
 							else
 							{
@@ -60,7 +60,15 @@
 								
 							}
 						}
-						echo ("<input type = 'button' value = 'Sign up'/>");
+						echo "<select type = 'list' name = 'lakeid' id = 'lakeid' form = 'trips'>";
+						foreach ( $db->query('select name, lakeid from lake;') as $row)
+						{
+							$lakeid = $row['lakeid'];
+							echo("<option value = '$lakeid'/>" . $row['name']);
+						}
+						echo "</select>";
+						echo ("<input type = 'submit' value = 'Sign up'/>");
+						
 						echo("</form>");
 					}		
 					
