@@ -11,6 +11,8 @@
 			<hr/>	
 			<h1> Assignments!</h1>
 			<a href="313/phpFile.php">Assignment 1</a>
+			<br/>
+			<a href="fishing/home.php">Reese's Fish Hunt</a>
 		</div>
 	</body>
 </html>
