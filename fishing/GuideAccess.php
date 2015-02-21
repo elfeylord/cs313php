@@ -1,17 +1,16 @@
 <?php 
 /****************************
 * Cole McAllister
-* Sign in page for fishers
+* Sign in page for guides
 *
 ******************************/
 
 
 session_start();
 
-
-if(isset($_SESSION['email']))
+if(isset($_SESSION['g_username']))
 {
-	header("Location: bookTripSignedIn.php");
+	header("Location: GuideAccessSignedIn.php");
 	die(); // we always include a die after redirects.
 }
 
@@ -20,14 +19,13 @@ require("password.php");
 $badLogin = false;
 
 //check if the we have post variables, if so check if they are correct
-if (isset($_POST['email']) && isset($_POST['password']))
+if (isset($_POST['username']) && isset($_POST['password']))
 {
-	$email = $_POST['email'];
+	$username = $_POST['username'];
 	$password = $_POST['password'];
 	
 	//the information for the DB
 	require('dbSetup.php');
-	
 	
 	//create the PDO
 	try
@@ -37,10 +35,10 @@ if (isset($_POST['email']) && isset($_POST['password']))
 		//throws an exception when there are problems
 		$db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 		
-		$query = "SELECT fisherid, name, password FROM fisher where email = '$email';";
+		$query = "SELECT password, guideid, information FROM guide where username = :username;";
 		
 		$statement = $db->prepare($query);
-		//$statement->bindParam(':email', $email);
+		$statement->bindParam(':username', $username);
 		$results = $statement->execute();
 		
 		if ($results)
@@ -49,10 +47,10 @@ if (isset($_POST['email']) && isset($_POST['password']))
 			$hashedPassword = $row['password'];
 			if (password_verify($password, $hashedPassword))
 			{
-				$_SESSION['email'] = $email;
-				$_SESSION['fisherid'] = $row['fisherid'];
-				$_SESSION['name'] = $row['name'];
-				header("Location: bookTripSignedIn.php");
+				$_SESSION['g_username'] = $username;
+				$_SESSION['guideid'] = $row['guideid'];
+				$_SESSION['information'] = $row['information'];
+				header("Location: GuideAccessSignedIn.php");
 				die(); // we always include a die after redirects.
 			}
 			else
@@ -72,12 +70,11 @@ if (isset($_POST['email']) && isset($_POST['password']))
 	}	
 }
 ?>
-
 <!DOCTYPE html>
 <html lang = "en">
 	<head>
 		<title>
-			Reese's Fish Hunt - Book Trip
+			Reese's Fish Hunt - Guide Others
 		</title>
 		<?php include 'links.php';?>
 	</head>
@@ -85,30 +82,36 @@ if (isset($_POST['email']) && isset($_POST['password']))
 		<?php include 'header.php';?>
 		<div id = "wrapper">
 			<h1>
-				Please Sign In
+				<?php
+				if ($badLogin)
+				{
+					echo "Incorrect username or password!";
+				}
+				else
+				{
+					echo "Welcome guides!";
+				}
+				?>
 			</h1>
-			<form action = "bookTrip.php" method = "POST"> 
-				<input type = "text" name = "email" /> - Email
+			<form id = "oldForm" action = "guideAccess.php" method = "POST"> 
+				<div>Sign in:</div>
+				<input type = "text" name = "username" /> - UserName
 				<br/>
 				<input type = "password" name = "password" /> - Password
 				<br/>
 				<input type = "submit" value = "Enter"/>
 			</form>
-			
 			<br/>
-			<br/>
-			NewUser
-			<br/>
-			<form action = "bookTripRegisterUser.php" method = "POST"> 
-				<input type = "text" name = "name" /> - Name
+			<form id = "newForm" action = "GuideAccessRegisterGuide.php" method = "POST">
+				<div>New Guide:</div>
+				<input type = "text" name = 'username' /> - UserName
 				<br/>
-				<input type = "text" name = "email" /> - Email
+				<input type = "password" name = 'password'/> - Password
 				<br/>
-				<input type = "password" name = "password" /> - Password
-				<br/>
+				<textarea form = 'newForm' name = 'information'></textarea> - Information
+				<br />
 				<input type = "submit" value = "Enter"/>
 			</form>
-			
 		</div>
 	</body>
 </html>

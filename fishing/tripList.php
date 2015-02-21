@@ -22,7 +22,7 @@
 							"<option value = '" . (intval(date("Y")) + 4) . "'/>" . (intval(date("Y")) + 4) .
 							"<option value = '" . (intval(date("Y")) + 5) . "'/>" . (intval(date("Y")) + 5) .
 						"</select>
-					<form id = 'lookup' action = 'bookTripLookUp.php' method = 'POST'>
+					<form id = 'lookup' action = 'bookTripSignedIn.php' method = 'POST'>
 						<input type = 'submit' value = 'Enter'/>
 						
 					</form>");
