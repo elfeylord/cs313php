@@ -93,7 +93,7 @@ if (isset($_POST['username']) && isset($_POST['password']))
 				}
 				?>
 			</h1>
-			<form id = "oldForm" action = "guideAccess.php" method = "POST"> 
+			<form id = "oldForm" action = "GuideAccess.php" method = "POST"> 
 				<div>Sign in:</div>
 				<input type = "text" name = "username" /> - UserName
 				<br/>
